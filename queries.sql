@@ -27,4 +27,14 @@ o."quantity" AS "quantity"
  WHERE o."OrderId" = 10251
  ORDER BY p."ProductName";
 
--- Display the OrderID, Customer's Company Name and the employee's LastName for every order. All columns should be labeled clearly. Displays 16,789 records.
+-- Display the OrderID, Customer's Company Name and the employee's LastName for every order. All
+-- columns should be labeled clearly. Displays 16,789 records.
+
+SELECT o."Id" AS "OrderId",
+ c."CompanyName" AS "CompanyName",
+ e."LastName" AS "EmployeeLastName"
+ FROM "Order" AS "o"
+ left JOIN "Employee" AS "e"
+ ON o."EmployeeId" = e."Id"
+ JOIN "Customer" AS "c"
+ ON o."CustomerId" = c."Id";
