@@ -33,6 +33,7 @@ FROM "Order" AS "o"
 left JOIN "Employee" AS "e" ON o."EmployeeId" = e."Id"
 JOIN "Customer" AS "c" ON o."CustomerId" = c."Id";
 -- STRETCH
+  -- 1.
 SELECT
   c."CategoryName" as "CategoryName",
   COUNT(p."ProductID") as "Product Count"
@@ -40,3 +41,11 @@ FROM "Products" as p
 JOIN "Categories" as c ON p."CategoryID" = c."CategoryID"
 GROUP BY
   c."CategoryName";
+-- 2.
+SELECT
+  o."OrderID" AS "OrderID",
+  od."Quantity" AS "Item Count"
+FROM "Orders" as o
+JOIN "OrderDetails" as od ON o."OrderID" = od."OrderID"
+GROUP BY
+  o."OrderID";
